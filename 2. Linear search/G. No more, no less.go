@@ -11,7 +11,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Buffer(make([]byte, 0, 1024*1024), 1024*1024)
 	writer := bufio.NewWriter(os.Stdout)
-	bufio.NewWriterSize(writer, 1024*1024)
+	defer writer.Flush()
 
 	scanner.Scan()
 	t, _ := strconv.Atoi(scanner.Text())
@@ -53,6 +53,4 @@ func main() {
 		writer.WriteString(strconv.Itoa(len(res)) + "\n")
 		writer.WriteString(strings.Join(resStr, " ") + "\n")
 	}
-
-	writer.Flush()
 }
