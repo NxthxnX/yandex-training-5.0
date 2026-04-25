@@ -13,7 +13,6 @@ func main() {
 	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
 	writer := bufio.NewWriter(os.Stdout)
 	defer writer.Flush()
-	bufio.NewWriterSize(writer, 1024*1024)
 
 	scanner.Scan()
 	inputParams := strings.Fields(scanner.Text())
